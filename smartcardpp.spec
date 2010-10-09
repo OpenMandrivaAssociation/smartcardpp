@@ -18,8 +18,6 @@ BuildRequires:	pcsc-lite-devel
 
 Requires:	libpcsclite1
 
-Provides:	smartcardpp = %{version}-%{release}
-
 %description
 smartcardpp is a set of C++ classes to manage smart card
 communications and implement basic command primitives.
@@ -27,11 +25,9 @@ communications and implement basic command primitives.
 
 %package	devel
 Summary:	Development files for %{name}
-Group:		Development/Libraries
+Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	pcsc-lite-devel
-
-Provides:	smartcardpp-devel = %{version}-%{release}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
