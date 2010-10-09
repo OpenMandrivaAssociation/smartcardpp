@@ -2,6 +2,12 @@
 %define rel 1
 %define release %mkrel %rel
 
+%define realname smartcardpp
+
+%define major 0
+%define libname %mklibname %{realname} %major
+%define libnamedev %mklibname %{realname} -d
+
 Name:		smartcardpp
 Version:	%{version}
 Release:	%{release}
@@ -22,14 +28,22 @@ Requires:	libpcsclite1
 smartcardpp is a set of C++ classes to manage smart card
 communications and implement basic command primitives.
 
+%package	-n %{libname}
+Summary:	A library for accessing smart cards
+Group:		Development/Other
+Requires:	%{name} = %{version}
 
-%package	devel
+%description	-n %{libname}
+smartcardpp is a set of C++ classes to manage smart card
+communications and implement basic command primitives.
+
+%package	-n %{libnamedev}
 Summary:	Development files for %{name}
 Group:		Development/Other
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Requires:	pcsc-lite-devel
 
-%description devel
+%description 	-n %{libnamedev}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -55,19 +69,21 @@ make install DESTDIR=$RPM_BUILD_ROOT -C %{_target_platform}/build
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 
 %files
 %defattr(-,root,root,-)
 %doc COPYING NEWS
 %{_bindir}/card-test
+
+%files -n %{libname}
+%defattr(-,root,root,-)
 %{_libdir}/*.so.*
 
-
-%files devel
+%files -n %{libnamedev}
 %defattr(-,root,root,-)
 %{_includedir}/smartcardpp/
 %{_libdir}/*.so
