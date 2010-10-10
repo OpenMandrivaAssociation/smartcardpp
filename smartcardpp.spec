@@ -22,9 +22,6 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	cmake
 BuildRequires:	pcsc-lite-devel
 
-Requires:	libpcsclite1
-Requires:	%{libname}
-
 %description
 smartcardpp is a set of C++ classes to manage smart card
 communications and implement basic command primitives.
@@ -32,6 +29,7 @@ communications and implement basic command primitives.
 %package	-n %{libname}
 Summary:	A library for accessing smart cards
 Group:		Development/Other
+Requires:	%{_lib}pcsclite1
 
 %description	-n %{libname}
 smartcardpp is a set of C++ classes to manage smart card
@@ -58,7 +56,7 @@ pushd %{_target_platform}
 %{cmake} ../..
 popd
 
-make %{?_smp_mflags} -C %{_target_platform}/build
+make -C %{_target_platform}/build
 
 
 %install
