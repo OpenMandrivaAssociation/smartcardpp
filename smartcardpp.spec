@@ -56,7 +56,7 @@ pushd %{_target_platform}
 %{cmake} ../..
 popd
 
-make -C %{_target_platform}/build
+%make -C %{_target_platform}/build
 
 
 %install
