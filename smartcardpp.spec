@@ -1,5 +1,5 @@
 %define version 0.2.0
-%define rel 1
+%define rel 2
 %define release %mkrel %rel
 
 %define realname smartcardpp
@@ -40,6 +40,7 @@ Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 Requires:	pcsc-lite-devel
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description 	-n %{libnamedev}
 The %{name}-devel package contains libraries and header files for
