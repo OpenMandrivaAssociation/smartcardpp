@@ -15,7 +15,7 @@ Summary:	A library for accessing smart cards
 
 Group:		System/Libraries
 License:	BSD
-URL:		http://code.google.com/p/esteid
+URL:		https://code.google.com/p/esteid
 Source:		http://esteid.googlecode.com/files/%{name}-%{version}.tar.bz2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
