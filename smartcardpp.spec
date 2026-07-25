@@ -1,6 +1,6 @@
 %define version 0.2.0
 %define rel 2
-%define release %mkrel %rel
+%define release %rel.1
 
 %define realname smartcardpp
 
